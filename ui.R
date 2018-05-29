@@ -35,19 +35,21 @@ shinyUI(pageWithSidebar(
       "Documentation",
       h4("Introduction"),
       p(
-        "As people around the world are spending an increasing amount of time on their mobile
-        and accessibility devices, predictive text becomes a most-needed input technology.
-        However, old systems, such as T9 and WordWise, sometimes produced hilarious 'damn you autocorrect' 
-        results."
+        "Predictive text is a feature found on mobile phones, tablets and other mobile technology which 
+        is nearly ubiquitous throughout the world. However the way this works eludes most users of these
+        devices"
       ),
       p(
-        "This more advanced, probabilistic-language-modeling-based approach 'knows' how certain
-        words tend to be combined together in our language and tends to exhibit a far greater accuracy."
+        "For this project we learned about N-Gram probabilistic-language-modeling-based approaches. This provides
+        basis of understanding of how certain words tend to be combined together in our language and a high likelihood
+        of accuracy for predicting the completion of frequent word combinations. This therefore provides the basis 
+        a likely completion to common phrases."
       ),
       p(
-        "It was developed within a partnership of Johns Hopkins with ",
+        "Thanks to a partnership between Johns Hopkins and ",
         a("SwiftKey", href = "http://swiftkey.com", target = "_blank"),
-        ", the leading company on predictive text input for Android and iOS keyboards."
+        ", the leading company on predictive text input for Android and iOS keyboards we were provided a robust corpus
+        or body of texts from which to build an N-Gram model"
       ),
       br(),
       h4("Highlights"),
@@ -56,44 +58,38 @@ shinyUI(pageWithSidebar(
         The app looks down the word tables to instantly recover the most probable next word."
       ),
       p(
-        "Versatility: The algorithm is handles many contractions used in Internet language: e.g. 
-        '2 b or not 2' will be translated as 'to be or not to' and 'be' will be suggested as the next word."
-      ),
-      p(
-        "Safety: Profanities and bleeped words (e.g. 'f***' and 'f#@%') are removed from user input 
-        as were also previously removed from the tables."
-      ),
-      p(
-        "Naturalness: Stopwords, on the other hand, were left in, as they are present in normal language 
+        "Naturalness: Stopwords, were left in, as they are present in normal language 
         and could be the expected next input from a user."
       ),
       br(),
+      
       h4("App Interface"),
       p(
-        "It is simple and intuitive to use."
+        "This app provides instructions and is simple and intuitive to use."
       ),
       p(
-        "The User Input panel on the left contains a text box to enter the phrase.
-        Just type in the first few words of a sentence.
-        It is analysed on the fly while text is being digited."
+        "Just type in the first few words of a common phrase in the user input panel on the left which
+        contains a text box for user input and a dropdown selection of number of results to return to the UI.
+        The results are analysed on the fly while text is being displayed."
       ),
       p(
-        "On the right, the app returns the last three words of the phrase as interpreted by algorithm
-        and the word predicted based on the phrase provided." 
+        "On the right panel of the UI, the app returns the last three words of the phrase as interpreted by 
+        the prediction algorithm and a table of words predicted based on the phrase provided." 
       ),
       br(),
       
       h4("App Functionality"),
       p(
-        "The first task is to filter the user input to remove profanity, contractions, punctuation,
-        numbers, foreign characters, and any extra white space. This is same text cleaning process
-        used on the initial SwiftKey data."
+        "The app works by truncating the user input to the final three words of the phrase provided and uses those
+        to look for matches in look up tables which are light weight and loaded with the application. If matches are
+        not found in the highest order table then the algorithm backs of to the lower order N-Gram table until max 5 
+        matches are made"
       ),
       p(
-        "It is based on the widely used 4-gram language model and on the ",
+        "This approach is based on the widely used N-gram language model and on the ",
         a(
-          "'Stupid Backoff' approach",
-          href = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.324.3653",
+          "'Stupid Backoff' model",
+          href = "https://web.stanford.edu/~jurafsky/slp3/",
           target = "_blank"
         ),
         ". More details can be found ",
@@ -108,7 +104,7 @@ shinyUI(pageWithSidebar(
       ),
       p(
         "Step 3: If a match is found, the algorith skips to Step 4. Otherwise, the user input is 
-        shortened again ('not to', etc.), and the algorithm go back to Step 2."
+        shortened again ('not to', etc.), and the algorithm go back to Step 2 but in a ."
       ),
       p(
         "Step 4: If a match was found, it is returned to the user interface. Otherwise, the most 
@@ -118,7 +114,7 @@ shinyUI(pageWithSidebar(
       h4("Source Code"),
       p(
         "All source code and files used to build and run this app can be found on this ",
-        a("git",
+        a("git repo",
           href = "https://github.com/j-p-courneya/wordPredictionApp",
           target = "_blank"),
         "."

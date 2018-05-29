@@ -13,9 +13,9 @@ shinyServer(
     output$inputText <- renderText({txtReturn()})
     
     #Get a table of predicted words and score
-    #predWords <- eventReactive(input$button1, {
-    #stupidBackoffPredFunction(input$impText, input$impWords)
-    #})
-    #output$predTable <- renderTable({predWords()})
+    predWords <- eventReactive(input$button1, {
+    head(stupidBackoffPredFunction(input$impText), input$impWords)
+    })
+    output$predTable <- renderTable({predWords()})
   }
 )
